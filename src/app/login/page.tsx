@@ -1,3 +1,0 @@
-"use client";
-import {useState} from "react";import {useRouter} from "next/navigation";
-export default function AdminLogin(){const[c,setC]=useState("");const[msg,setMsg]=useState("");const r=useRouter();async function go(e:any){e.preventDefault();const res=await fetch("/api/admin/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({code:c})});if(res.ok)r.push("/admin");else setMsg("Kode admin salah.");}return <main className="admin"><h1>👑 Admin Sisi Otaku</h1><form className="form" onSubmit={go}><input className="input" type="password" placeholder="Kode admin" value={c} onChange={e=>setC(e.target.value)}/><button className="btn">Masuk</button>{msg&&<div className="notice">{msg}</div>}</form></main>}
